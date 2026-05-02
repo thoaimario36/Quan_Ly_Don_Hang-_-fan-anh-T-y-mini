@@ -82,17 +82,27 @@ public:
         cin.ignore();
         getline(cin, maDonHang);
         
-        // Kiểm tra độ dài bằng.length()
+        // Kiem tra độ dài bang .length()
         while(maDonHang.length() == 0) {
+            doiMau(MAU_DO);
             cout << "  [!] Ma khong duoc rong. Nhap lai: ";
+            doiMau(MAU_TRANG);
             getline(cin, maDonHang);
         }
         
         // Gọi hàm nhập của lớp NgayThang
         ngayDatHang.Nhap(); 
         
-        cout << "  Chon goi van chuyen (1-Co ban, 2-Nhanh, 3-Hoa toc): ";
-        cin >> goiVanChuyen;
+        // Chon goi van chuyen (có báo lỗi)
+        do {
+            cout << "  Chon goi van chuyen (1-Co ban, 2-Nhanh, 3-Hoa toc): ";
+            cin >> goiVanChuyen;
+            if (goiVanChuyen < 1 || goiVanChuyen > 3) {
+                doiMau(MAU_DO);
+                cout << "  [!] Chi duoc chon 1, 2 hoac 3. Vui long nhap lai!\n";
+                doiMau(MAU_TRANG);
+            }
+        } while (goiVanChuyen < 1 || goiVanChuyen > 3);
     }
 
     virtual void InThongTin() {
