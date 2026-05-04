@@ -180,11 +180,13 @@ public:
         cin >> phiHaiQuan;
     }
 
-    double TinhTongTien() override {
+   double TinhTongTien() override {
         double phiVND = phiHaiQuan * 25000; 
         double tongTien = phiVND;
-        if (goiVanChuyen == 2) tongTien = (phiVND * 1.5) + 500000; // Phụ phí gói
-        if (goiVanChuyen == 3) tongTien = (phiVND * 2.0) + 1500000; 
+        
+        if (goiVanChuyen == 2) tongTien = phiVND + 500000; 
+        if (goiVanChuyen == 3) tongTien = phiVND + 1500000; 
+        
         return tongTien;
     }
 
